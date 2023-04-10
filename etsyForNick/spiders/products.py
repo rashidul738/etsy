@@ -1,14 +1,27 @@
 import scrapy
 
 
+f = [
+    'https://www.etsy.com/shop/ilovematz?sort_order=price_desc',
+    'https://www.etsy.com/shop/Shabinaro?sort_order=price_desc',
+    'https://www.etsy.com/shop/ManhattanNeons?sort_order=price_desc',
+    'https://www.etsy.com/shop/MetalWallArtK2T?sort_order=price_desc',
+    'https://www.etsy.com/shop/ChumDecor?sort_order=price_desc',
+    'https://www.etsy.com/shop/BotanicArtMoss?sort_order=price_desc',
+    'https://www.etsy.com/shop/OjuDesign?sort_order=price_desc',
+    'https://www.etsy.com/shop/MapSnappy?sort_order=price_desc',
+    'https://www.etsy.com/shop/NeptuneArtPrints?sort_order=price_desc',
+    'https://www.etsy.com/shop/elleandindi?sort_order=price_desc'
+]
+
 class ProductsSpider(scrapy.Spider):
     name = 'products'
     def start_requests(self):
-        with open('links.csv') as f:
-            for line in f:
-                if not line.strip():
-                    continue
-                yield scrapy.Request(line, callback=self.parse)
+        # with open('links.csv') as f:
+        for line in f:
+            if not line.strip():
+                continue
+            yield scrapy.Request(line, callback=self.parse)
 
     def parse(self, response):
         links = response.xpath('//div[contains(@class, "responsive-listing-grid")]//a/@href').extract()
