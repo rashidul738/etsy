@@ -18,16 +18,16 @@ class ProductsSpider(scrapy.Spider):
         for line in f:
             if not line.strip():
                 continue
-            yield scrapy.Request(line, callback=self.parse)
+            yield scrapy.Request(line, callback=self.parse_details)
 
-    def parse(self, response):
-        links = response.xpath('//div[contains(@class, "responsive-listing-grid")]//a/@href').extract()
-        for link in links:
-            yield scrapy.Request(link, callback=self.parse_details, meta={'urls_1': response.url})
+    # def parse(self, response):
+    #     links = response.xpath('//div[contains(@class, "responsive-listing-grid")]//a/@href').extract()
+    #     for link in links:
+    #         yield scrapy.Request(link, callback=self.parse_details, meta={'urls_1': response.url})
             
-        next_page = response.xpath('(//a[@class="wt-action-group__item wt-btn wt-btn--icon "])[4]/@href').get()
-        if next_page:
-            yield scrapy.Request(next_page, callback=self.parse)
+    #     next_page = response.xpath('(//a[@class="wt-action-group__item wt-btn wt-btn--icon "])[4]/@href').get()
+    #     if next_page:
+    #         yield scrapy.Request(next_page, callback=self.parse)
         
         
     def parse_details(self, response):
