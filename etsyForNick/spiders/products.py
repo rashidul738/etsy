@@ -2,16 +2,13 @@ import scrapy
 
 
 f = [
-    'https://www.etsy.com/shop/ilovematz?sort_order=price_desc',
-    'https://www.etsy.com/shop/Shabinaro?sort_order=price_desc',
-    'https://www.etsy.com/shop/ManhattanNeons?sort_order=price_desc',
-    'https://www.etsy.com/shop/MetalWallArtK2T?sort_order=price_desc',
-    'https://www.etsy.com/shop/ChumDecor?sort_order=price_desc',
-    'https://www.etsy.com/shop/BotanicArtMoss?sort_order=price_desc',
-    'https://www.etsy.com/shop/OjuDesign?sort_order=price_desc',
-    'https://www.etsy.com/shop/MapSnappy?sort_order=price_desc',
-    'https://www.etsy.com/shop/NeptuneArtPrints?sort_order=price_desc',
-    'https://www.etsy.com/shop/elleandindi?sort_order=price_desc'
+    'https://www.etsy.com/listing/955609172/pallet-blank-plain-coir-doormats-craft',
+    'https://www.etsy.com/listing/1229701511/please-use-the-spray-bathroom-doormat',
+    'https://www.etsy.com/listing/1229728289/please-flush-toilet-bathroom-doormat',
+    'https://www.etsy.com/listing/1229731087/please-remain-seated-bathroom-doormat',
+    'https://www.etsy.com/listing/1229745291/soak-your-troubles-bathroom-doormat',
+    'https://www.etsy.com/listing/1215799926/poops-about-to-go-down-bathroom-doormat',
+    'https://www.etsy.com/listing/1215872954/wipe-it-real-good-bathroom-doormat',
 ]
 
 class ProductsSpider(scrapy.Spider):
