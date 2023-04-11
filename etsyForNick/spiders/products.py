@@ -35,7 +35,7 @@ class ProductsSpider(scrapy.Spider):
         if shopName:
             shopName = shopName.strip()
             
-        p_url = response.meta['urls_1']
+        p_url = response.xpath('//a[contains(@aria-label, "View more products from store owner")]/@href').get()
         
         product_name = response.xpath('//div[@class="wt-mb-xs-2"]/h1/text()').get()
         if product_name is not None:
