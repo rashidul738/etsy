@@ -14,23 +14,12 @@ f = [
 class ProductsSpider(scrapy.Spider):
     name = 'products'
     def start_requests(self):
-        # with open('links.csv') as f:
         for line in f:
             if not line.strip():
                 continue
-            yield scrapy.Request(line, callback=self.parse_details)
-
-    # def parse(self, response):
-    #     links = response.xpath('//div[contains(@class, "responsive-listing-grid")]//a/@href').extract()
-    #     for link in links:
-    #         yield scrapy.Request(link, callback=self.parse_details, meta={'urls_1': response.url})
-            
-    #     next_page = response.xpath('(//a[@class="wt-action-group__item wt-btn wt-btn--icon "])[4]/@href').get()
-    #     if next_page:
-    #         yield scrapy.Request(next_page, callback=self.parse)
+            yield scrapy.Request(line, callback=self.parse)
         
-        
-    def parse_details(self, response):
+    def parse(self, response):
         shopName = response.xpath('//a[contains(@aria-label, "View more products from store owner")]/span/text()').get()
         if shopName:
             shopName = shopName.strip()
